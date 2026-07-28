@@ -92,9 +92,9 @@ if uploaded_file is not None:
             caption = model.predict(img_feature, vocab, device, beam_width=3)
             res = ""
             for c in caption:
-                if c == "<unk>":
+                if c in ["<unk>", "<start>", "<end>"]:
                     continue
                 res += c + " "
         # Display Result
         st.success("### Generated Caption:")
-        st.write(f"**\"{res[1:-1]\"**")
+        st.write(f"**\"{res[:-1]\"**")
