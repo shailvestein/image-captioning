@@ -5,7 +5,6 @@ from PIL import Image
 
 import torch
 import torch.nn as nn
-from torchvision import models, transforms
 import streamlit as st
 from Model import TransformerImageCaptioning
 from FeatureExtractor import FeatureExtractor, image_transform
