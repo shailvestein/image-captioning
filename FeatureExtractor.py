@@ -1,3 +1,6 @@
+import torch
+import torch.nn as nn
+
 # Advanced Feature Extractor module utilizing pretrained EfficientNet-B4 architecture
 class FeatureExtractor(nn.Module):
     def __init__(self, fine_tune=False):
@@ -24,7 +27,7 @@ class FeatureExtractor(nn.Module):
         return features
 
 # Define image preprocessing transformation pipeline optimized for EfficientNet-B4
-def get_image_transform():
+def image_transform():
     return transforms.Compose([
         # Step 1: Resize images to 380x380 resolution required by EfficientNet-B4
         transforms.Resize((380, 380)),
