@@ -10,7 +10,6 @@ from Model import TransformerImageCaptioning
 from FeatureExtractor import FeatureExtractor, image_transform
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
-# Vocabulary Class KO SABSE PEHLE DEFINE KAREIN
 class Vocabulary:
     def __init__(self, freq_threshold=5):
         self.itos = {0: "<pad>", 1: "<start>", 2: "<end>", 3: "<unk>"}
@@ -25,7 +24,6 @@ class Vocabulary:
         return [self.stoi.get(token, self.stoi["<unk>"]) for token in tokenized_text]
 
 
-# Custom Unpickler (Pickle ke Class Mismatch Error se bachne ke liye)
 class CustomUnpickler(pickle.Unpickler):
     def find_class(self, module, name):
         if name == 'Vocabulary':
@@ -60,13 +58,9 @@ def load_all_assets():
     return vocab, model, feature_extractor, transform
 
 
-# ==========================================
-# 4. STREAMLIT UI IMPLEMENTATION
-# ==========================================
-
 st.set_page_config(page_title="Image Caption Generator", layout="centered")
 
-st.title("🖼️ Image Caption Generator")
+st.title("🖼️Generate Image Caption")
 st.write("Upload an image to generate a caption using Transformer & EfficientNet-B4.")
 
 # Load models and assets
