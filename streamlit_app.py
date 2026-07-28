@@ -90,7 +90,11 @@ if uploaded_file is not None:
 
             # 2. Beam Search Caption Generation
             caption = model.predict(img_feature, vocab, device, beam_width=3)
-
+            res = ""
+            for c in caption:
+                if c == "<unk>":
+                    continue
+                res += c + " "
         # Display Result
         st.success("### Generated Caption:")
-        st.write(f"**\"{caption}\"**")
+        st.write(f"**\"{res[1:-1]\"**")
