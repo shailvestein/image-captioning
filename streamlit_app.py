@@ -97,4 +97,4 @@ if uploaded_file is not None:
                 res += c + " "
         # Display Result
         st.success("### Generated Caption:")
-        st.write(f"**\{res[:-1]\**")
+        st.write(f'**"{res[:-1]}"**')
