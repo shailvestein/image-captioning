@@ -34,7 +34,7 @@ image-caption-generator/
 ## 📊 End-to-End Pipeline
 
 ### 1. Data Collection & Preprocessing
-*   **Dataset Source:** Standard image-captioning benchmarks (such as (!)[Flickr8k](https://www.kaggle.com/datasets/adityajn105/flickr8k) or MS COCO).
+*   **Dataset Source:** Standard image-captioning benchmarks (such as [Flickr8k](https://www.kaggle.com/datasets/adityajn105/flickr8k) or MS COCO).
 *   **Image Pipeline:** Images are resized and center-cropped to $380 \times 380$ resolution (required by EfficientNet-B4) and normalized using ImageNet statistics ($\text{mean} = [0.485, 0.456, 0.406]$, $\text{std} = [0.229, 0.224, 0.225]$).
 *   **Text Pipeline:** Captions are tokenized, cleaned, and mapped to integer sequences using a custom `Vocabulary` class incorporating special tokens: `<pad>`, `<start>`, `<end>`, and `<unk>`.
 
