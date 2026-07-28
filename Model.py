@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+import math
 
 # Positional Encoding module to inject sequence order awareness into transformer inputs
 class PositionalEncoding(nn.Module):
