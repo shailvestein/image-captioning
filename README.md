@@ -50,4 +50,4 @@ image-caption-generator/
 
 ### 4. User Interface & Streamlit Web App
 * **Live Web Preview:**
-  ![Streamlit Homepage UI](data/homepage snap.jpg)
+  ![Streamlit Homepage UI](data/homepage-snap.jpg)
