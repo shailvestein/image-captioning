@@ -10,6 +10,30 @@ import streamlit as st
 from Model import TransformerImageCaptioning
 from FeatureExtractor import FeatureExtractor, image_transform
 
+
+# Vocabulary Class KO SABSE PEHLE DEFINE KAREIN
+class Vocabulary:
+    def __init__(self, freq_threshold=5):
+        self.itos = {0: "<pad>", 1: "<start>", 2: "<end>", 3: "<unk>"}
+        self.stoi = {"<pad>": 0, "<start>": 1, "<end>": 2, "<unk>": 3}
+        self.freq_threshold = freq_threshold
+
+    def __len__(self):
+        return len(self.itos)
+
+    def numericalize(self, text):
+        tokenized_text = text.split()
+        return [self.stoi.get(token, self.stoi["<unk>"]) for token in tokenized_text]
+
+
+# Custom Unpickler (Pickle ke Class Mismatch Error se bachne ke liye)
+class CustomUnpickler(pickle.Unpickler):
+    def find_class(self, module, name):
+        if name == 'Vocabulary':
+            return Vocabulary
+        return super().find_class(module, name)
+
+
 @st.cache_resource
 def load_all_assets():
     # 1. Load Vocabulary Object
