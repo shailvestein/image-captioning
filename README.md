@@ -46,11 +46,8 @@ image-caption-generator/
 *   During inference, the image is passed through the frozen `FeatureExtractor` to obtain the $1792$-dimensional vector.
 *   The `TransformerImageCaptioning` model uses **Beam Search** ($width = 3$) to explore multiple potential text sequences simultaneously, ensuring the most coherent and syntactically correct caption is chosen.
 
-## 📦 Installation & Local Setup
+## 🌐 Live Web Application
 
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/your-username/image-caption-generator.git](https://github.com/your-username/image-caption-generator.git)
-   cd image-caption-generator
-  ```
-   
+Experience the model in action without any local setup. The web interface features single-image queue management, responsive UI design cards, and instant caption rendering:
+
+👉 **[Launch Live Demo on Streamlit Cloud](https://caption-image.streamlit.app/)**
