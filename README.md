@@ -1,6 +1,8 @@
 # 🖼️ AI Image Caption Generator
 An end-to-end Deep Learning application that automatically generates descriptive, natural-language captions for any uploaded image. This project combines a **Computer Vision backbone (EfficientNet-B4)** for deep feature extraction with a **Natural Language Processing decoder (Transformer Decoder)**, wrapped in an interactive **Streamlit web application**.
 
+## 🌐 Live Web Application
+Experience the model in action without any local setup. The web interface features single-image queue management, responsive UI design cards, and instant caption rendering:
 **[Launch Live Demo on Streamlit Cloud](https://caption-image.streamlit.app/)**
 
 ## 🚀 Project Overview & Architecture
@@ -45,8 +47,4 @@ image-caption-generator/
 ### 3. Inference & Generation (`.predict()`)
 *   During inference, the image is passed through the frozen `FeatureExtractor` to obtain the $1792$-dimensional vector.
 *   The `TransformerImageCaptioning` model uses **Beam Search** ($width = 3$) to explore multiple potential text sequences simultaneously, ensuring the most coherent and syntactically correct caption is chosen.
-
-## 🌐 Live Web Application
-
-Experience the model in action without any local setup. The web interface features single-image queue management, responsive UI design cards, and instant caption rendering:
 
