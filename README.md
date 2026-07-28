@@ -49,4 +49,4 @@ image-caption-generator/
 *   The `TransformerImageCaptioning` model uses **Beam Search** ($width = 3$) to explore multiple potential text sequences simultaneously, ensuring the most coherent and syntactically correct caption is chosen.
 
 ### 4. UI
-(./data/homepage snap.jpg)
+[](./data/homepage snap.jpg)
