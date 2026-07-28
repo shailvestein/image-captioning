@@ -7,11 +7,13 @@ import torch
 import torch.nn as nn
 from torchvision import models, transforms
 import streamlit as st
+from Model import TransformerImageCaptioning
+from FeatureExtractor import FeatureExtractor, image_transform
 
 @st.cache_resource
 def load_all_assets():
     # 1. Load Vocabulary Object
-    with open("vocab.pkl", "rb") as f:
+    with open("./weights/vocab.pkl", "rb") as f:
         vocab = pickle.load(f)
 
     vocab_size = len(vocab)
@@ -23,14 +25,14 @@ def load_all_assets():
         feature_input_shape=1792
     ).to(device)
 
-    model.load_state_dict(torch.load("transformer_image_captioning_effnet.pth", map_location=device))
+    model.load_state_dict(torch.load("./weights/transformer_image_captioning_effnet.pth", map_location=device))
     model.eval()
 
     # 3. Load EfficientNet Feature Extractor
     feature_extractor = FeatureExtractor(fine_tune=False).to(device)
     feature_extractor.eval()
 
-    transform = get_image_transform()
+    transform = image_transform()
 
     return vocab, model, feature_extractor, transform
 
@@ -61,7 +63,7 @@ if uploaded_file is not None:
             # 1. Image Preprocessing & Feature Extraction
             img_tensor = transform(image).unsqueeze(0).to(device)
             with torch.no_grad():
-                img_feature = feature_extractor(img_tensor).squeeze(0)
+                img_feature = feature_extractor(img_tensor)
 
             # 2. Beam Search Caption Generation
             caption = model.predict(img_feature, vocab, device, beam_width=3)
