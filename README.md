@@ -48,5 +48,6 @@ image-caption-generator/
 *   During inference, the image is passed through the frozen `FeatureExtractor` to obtain the $1792$-dimensional vector.
 *   The `TransformerImageCaptioning` model uses **Beam Search** ($width = 3$) to explore multiple potential text sequences simultaneously, ensuring the most coherent and syntactically correct caption is chosen.
 
-### 4. UI
-[](./data/homepage snap.jpg)
+### 4. User Interface & Streamlit Web App
+* **Live Web Preview:**
+  ![Streamlit Homepage UI](./data/homepage snap.jpg)
