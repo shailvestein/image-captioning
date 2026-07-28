@@ -10,10 +10,9 @@ import streamlit as st
 from Model import TransformerImageCaptioning
 from FeatureExtractor import FeatureExtractor, image_transform
 
-# ==========================================
-# 1. THREAD LOCK FOR QUEUE MANAGEMENT
-# ==========================================
+# THREAD LOCK FOR QUEUE MANAGEMENT
 # Locking mechanism to process one image at a time
+
 @st.cache_resource
 def get_processing_lock():
     return threading.Lock()
@@ -24,9 +23,7 @@ processing_lock = get_processing_lock()
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 
-# ==========================================
-# 2. VOCABULARY & UNPICKLER CLASSES
-# ==========================================
+# VOCABULARY & UNPICKLER CLASSES
 class Vocabulary:
     def __init__(self, freq_threshold=5):
         self.itos = {0: "<pad>", 1: "<start>", 2: "<end>", 3: "<unk>"}
@@ -48,9 +45,7 @@ class CustomUnpickler(pickle.Unpickler):
         return super().find_class(module, name)
 
 
-# ==========================================
-# 3. LOAD ASSETS (CACHED)
-# ==========================================
+# LOAD ASSETS (CACHED)
 @st.cache_resource
 def load_all_assets():
     # 1. Load Vocabulary Object
@@ -78,9 +73,7 @@ def load_all_assets():
     return vocab, model, feature_extractor, transform
 
 
-# ==========================================
-# 4. PAGE CONFIG & CUSTOM CSS (CARDS & UI)
-# ==========================================
+# PAGE CONFIG & CUSTOM CSS (CARDS & UI)
 st.set_page_config(
     page_title="Image Caption AI Generator",
     page_icon="🖼️",
@@ -165,9 +158,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-# ==========================================
-# 5. UI HEADER & CARDS
-# ==========================================
+#  UI HEADER & CARDS
 st.markdown("<h1 class='title-text'>🖼️ AI Image Caption Generator</h1>", unsafe_allow_html=True)
 st.markdown("<p class='sub-text'>Transform your visual content into meaningful descriptive sentences instantly using Deep Learning.</p>", unsafe_allow_html=True)
 
@@ -197,9 +188,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-# ==========================================
-# 6. FILE UPLOAD & QUEUE-LOCKED PROCESSING
-# ==========================================
+# FILE UPLOAD & QUEUE-LOCKED PROCESSING
 uploaded_file = st.file_uploader("Choose an image to describe...", type=["jpg", "jpeg", "png"])
 
 if uploaded_file is not None:
