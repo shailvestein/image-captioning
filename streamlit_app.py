@@ -10,7 +10,7 @@ import streamlit as st
 from Model import TransformerImageCaptioning
 from FeatureExtractor import FeatureExtractor, image_transform
 
-
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
 # Vocabulary Class KO SABSE PEHLE DEFINE KAREIN
 class Vocabulary:
     def __init__(self, freq_threshold=5):
