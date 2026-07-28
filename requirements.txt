@@ -1,0 +1,10 @@
+# Deep Learning Framework & Vision (For Model & Feature Extraction)
+torch==2.2.1
+torchvision==0.17.1
+
+# Image Processing & UI
+pillow==10.2.0
+streamlit==1.32.0
+
+# Essential Data Utilities
+numpy==1.26.4
